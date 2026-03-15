@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ELI5">
+  <meta id="meta-theme" name="theme-color" content="#121212">
+  <title>ELI5 - Explain Like I'm Five</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+  <!-- Theme Picker Panel (slide-up) -->
+  <div id="theme-overlay" class="theme-overlay"></div>
+  <div id="theme-panel" class="theme-panel">
+    <div class="theme-panel-header">
+      <span>Appearance</span>
+      <button id="theme-panel-close" class="theme-panel-close">&times;</button>
+    </div>
+    <div class="theme-options">
+      <button class="theme-btn" data-theme="light">
+        <span class="theme-preview theme-preview-light"></span>
+        <span>Light</span>
+      </button>
+      <button class="theme-btn" data-theme="sepia">
+        <span class="theme-preview theme-preview-sepia"></span>
+        <span>Sepia</span>
+      </button>
+      <button class="theme-btn" data-theme="dim">
+        <span class="theme-preview theme-preview-dim"></span>
+        <span>Dim</span>
+      </button>
+      <button class="theme-btn active" data-theme="dark">
+        <span class="theme-preview theme-preview-dark"></span>
+        <span>Dark</span>
+      </button>
+    </div>
+    <div class="font-size-control">
+      <span class="font-size-label">Text Size</span>
+      <div class="font-size-slider-row">
+        <span class="font-size-sample small">A</span>
+        <input type="range" id="font-size-slider" min="14" max="24" value="16" step="1">
+        <span class="font-size-sample large">A</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post List View -->
+  <div id="list-view" class="view active">
+    <header class="app-header">
+      <div class="app-header-row">
+        <div>
+          <h1 id="subreddit-title">r/ExplainLikeImFive</h1>
+          <p id="tagline" class="tagline">Simple answers to complex questions</p>
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Appearance settings">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="subreddit-tabs">
+      <button class="sub-tab active" data-sub="explainlikeimfive" data-label="r/ELI5" data-tagline="Simple answers to complex questions">ELI5</button>
+      <button class="sub-tab" data-sub="SideProject" data-label="r/SideProject" data-tagline="Show off what you're building">SideProject</button>
+      <button class="sub-tab" data-sub="programming" data-label="r/programming" data-tagline="News and discussion for programmers">Programming</button>
+    </nav>
+
+    <nav class="sort-tabs">
+      <button class="tab active" data-sort="hot">Hot</button>
+      <button class="tab" data-sort="top">Top</button>
+      <button class="tab" data-sort="new">New</button>
+    </nav>
+
+    <main id="posts-container">
+      <div class="loader"><div class="spinner"></div></div>
+    </main>
+  </div>
+
+  <!-- Post Detail View -->
+  <div id="detail-view" class="view">
+    <header class="detail-header">
+      <button id="back-btn" class="back-btn" aria-label="Go back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back
+      </button>
+    </header>
+
+    <article id="detail-content"></article>
+
+    <section id="comments-container">
+      <div class="loader"><div class="spinner"></div></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

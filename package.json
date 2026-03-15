@@ -1,0 +1,9 @@
+{
+  "name": "eli5-pwa",
+  "version": "1.0.0",
+  "description": "PWA for browsing r/ExplainLikeImFive, r/SideProject, r/programming",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
