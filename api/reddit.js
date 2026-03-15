@@ -5,9 +5,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid Reddit URL' });
   }
 
+  // Use old.reddit.com — more lenient with server-side requests
+  const oldRedditUrl = redditUrl.replace('https://www.reddit.com/', 'https://old.reddit.com/');
+
   try {
-    const response = await fetch(redditUrl, {
-      headers: { 'User-Agent': 'ELI5-PWA/1.0' },
+    const response = await fetch(oldRedditUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; ELI5-PWA/1.0; +https://github.com/subashstanz/eli5)',
+        'Accept': 'application/json',
+      },
       signal: AbortSignal.timeout(10000),
     });
 
